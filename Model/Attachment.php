@@ -8,7 +8,7 @@
 class Attachment extends AppModel {
 
 	var $actsAs = array(
-		'Uploader.Attachment' => array(
+		'UpUpUploader.Attachment' => array(
 			'img'=>array(
 				'finalPath'=> '/files/images/',
 				'aspect'=>false,
@@ -32,7 +32,7 @@ class Attachment extends AppModel {
 						'height' => 192,
 						'location'=>'center'
 					)
-				)
+				),
 			),
 			'file'=>[
 				'finalPath'=> '/files/docs/',
