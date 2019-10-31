@@ -129,6 +129,7 @@ $(function(){
 	AttachmentModel = Backbone.Model.extend({
 		defaults: {
 			attachment_foreign_key: attachment_foreign_key,
+            model: attachment_foreign_model,
 			rotation: 0,
 			saving: false
 		},
