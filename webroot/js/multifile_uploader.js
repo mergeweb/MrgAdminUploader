@@ -159,7 +159,7 @@ $(function(){
     if(enableImageRotation){
     	imageRotationTemplate = `
     		<div style="display: flex; justify-content: space-between">
-				<button class="btn rotate-left"><i class="fa fa-rotate-left" /></button>
+				<button class="btn rotate-left"><i class="fa fa-rotate-left"></i></button>
 				<% if (rotation > 0) { %>
 					<% if (saving === true) {%>
 					<button class="btn btn-success" disabled="disabled">Saving...</button>
@@ -167,7 +167,7 @@ $(function(){
 					<button class="btn btn-success save-rotation">Save Rotation</button>
 					<% } %>
 				<% } %>
-				<button class="btn rotate-right"><i class="fa fa-rotate-right" /></button>
+				<button class="btn rotate-right"><i class="fa fa-rotate-right"></i></button>
 			</div>
     	`
 	}
