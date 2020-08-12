@@ -33,6 +33,7 @@ class Attachment extends AppModel {
 						'location'=>'center'
 					)
 				),
+                'nameCallback' => 'hashAttachmentFilename'
 			),
 			'file'=>[
 				'finalPath'=> '/files/docs/',
@@ -61,5 +62,15 @@ class Attachment extends AppModel {
 		//}
 		return $this->editableImageBeforeUpload($options);
 	}
+
+    /**
+     * Hash the filename for the attachment
+     * This is to greatly reduce probability of naming collision when uploading files to S3
+     * @param $filename
+     * @return string
+     */
+	function hashAttachmentFilename($filename) {
+        return md5(time() . '_' . $filename) . '.' . pathinfo($filename, PATHINFO_EXTENSION);
+    }
 }
 ?>
