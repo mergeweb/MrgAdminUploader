@@ -260,7 +260,7 @@ $(function(){
 			e.preventDefault();
 			this.model.set('saving', true);
 			const policy = filestackSignature.getFilestackPolicy(moment().unix() + 500, ['convert', 'store']);
-			const signature = filestackSignature.getFilestackSignature(policy, filestackSecret)
+			const signature = filestackSignature.getFilestackSignature(policy, process.env.FILESTACK_SECRET)
 			const rotation = this.model.get('rotation');
 			const cdnUrl = `https://cdn.filestackcontent.com/ABNjhyUWiSVyynPgT99BEz`;
 			const rotatedUrl = [cdnUrl];
