@@ -267,13 +267,13 @@ $(function(){
 			const security = `security=p:${policy},s:${signature}`;
 			rotatedUrl.push(security);
 			rotatedUrl.push(`rotate=deg:${rotation}`);
-			rotatedUrl.push(`store=location:s3,container:heavy-crane-salvage,access:public`);
+			rotatedUrl.push(`store=location:s3,container:heavy-crane-salvage-v2,access:public`);
 			rotatedUrl.push(this.model.get('img'));
 
 			$.ajax({
 				url: rotatedUrl.join('/'),
 				complete: function (response) {
-					this.model.set('img', 'https://s3.amazonaws.com/heavy-crane-salvage/' + response.responseJSON.key);
+					this.model.set('img', 'https://s3.amazonaws.com/heavy-crane-salvage-v2/' + response.responseJSON.key);
 					this.model.save();
 				}.bind(this)
 			});
