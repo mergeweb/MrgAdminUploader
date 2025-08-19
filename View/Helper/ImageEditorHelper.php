@@ -80,10 +80,16 @@
 //			$this->Html->script('MrgAdminUploader.multifile_uploader', array("inline"=>false));
 			return
 				$this->Html->div('',
-					$this->Html->div('message', 'Drop images here to upload'),
+					$this->Html->div('message',
+						'Drop images here to upload. <br />'.
+						$this->Html->link('Click here to add files', 'javascript:void(0)', ['class' => 'add-files-link'])
+					),
 					['id'=>'dropbox']
 				).
+				// Hidden file input used by jquery.filedrop as a fallback when clicking the drop area
+				$this->Form->file('dropzone', ['id' => 'dropzone', 'multiple' => true, 'accept' => 'image/*', 'style' => 'position:absolute;left:-9999px;width:0;height:0;opacity:0;']).
 				$this->Html->scriptBlock('window.attachment_foreign_key = '.$foreign_key_id.'; window.attachment_foreign_model = "'.$model.'";').
+				$this->Html->scriptBlock("(function(){ function attach(){ var dropbox = document.getElementById('dropbox'); if(!dropbox){ return; } dropbox.addEventListener('click', function(e){ var t = e.target; if(t && t.classList && t.classList.contains('add-files-link')){ e.preventDefault(); e.stopPropagation(); var input = document.getElementById('dropzone'); if(input){ input.click(); } } }); } if (document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', attach); } else { attach(); } })();").
 				$this->Html->div('attachments', '');
 
 		}
